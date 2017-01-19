@@ -1,25 +1,24 @@
-# nearby_api_rails
-Find nearby cities API. This time, developed in Ruby on Rails.
+# README
 
-This is an experimental server writen in Ruby on Rails that loads a JSON file with a bunch of cities and serves data in an API service.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-This is still in development, but it will have these methods:
+Things you may want to cover:
 
-/cities/
+* Ruby version
 
- - GET: Shows a list of available cities
- - POST: Adds a new city to the cities list
+* System dependencies
 
-/cities/:id
+* Configuration
 
- - GET: Shows data stored for a given city
- - PUT: Updates city data
- - DELETE: Removes a city from the cities list
- 
-/cities/near/:coords
+* Database creation
 
- - GET: Shows a list of cities within a radius of 500Km from the given point
+* Database initialization
 
-/cities/nearby/:id
+* How to run the test suite
 
- - GET: Shows a list of cities within a radius of 500Km from the given city
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
