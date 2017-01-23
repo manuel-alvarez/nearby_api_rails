@@ -16,13 +16,11 @@ class CitiesLoader
 		uri = URI(@file)
 		puts "Loading file #{@file}"
 		response = Net::HTTP.get(uri)
-		JSON[response]
+		@cities = JSON[response]
 	end
 end
 
 cities_loader = CitiesLoader.new
-Rails.application.config.cities = cities_loader.load
-# puts "And the result is:"
-# puts Rails.application.config.cities
+Rails.application.config.cities = cities_loader.load  # Load returns a hash with all the cities
 
-puts "Than's all"  # Now we know that everything went right
+puts "That's all"  # Now we know that everything went right
