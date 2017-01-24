@@ -87,4 +87,13 @@ class CitiesController < ActionController::Base
 
     render :json => nearby_cities
   end
+
+  def near
+    latlon = params[:latlon].split(",")
+    lat = latlon[0].to_f
+    lon = latlon[1].to_f
+    nearby_cities = self.cities_near(lat, lon)
+
+    render :json => nearby_cities
+  end
 end

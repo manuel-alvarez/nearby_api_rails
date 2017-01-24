@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   resources :cities
   get '/cities/:id/nearby', to: 'cities#nearby', as: 'nearby'
+  get '/cities/near/:latlon', to: 'cities#near', as: 'near', constraints: { latlon: /[\-0-9\.]+,[\-0-9\.]+/ }
 end

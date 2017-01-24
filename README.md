@@ -17,9 +17,13 @@ This is still in development, but it will have these methods:
 
 /cities/:id/nearby
 
- - GET: Shows a list of cities within a radius of 500Km from the given city
+ - GET: Shows a list of cities within a radius of 500Km from the given city.
 
 /cities/near/:coords
 
  - GET: Shows a list of cities within a radius of 500Km from the given point
+
+   coords should have this format: /[\-0-9\.]+,[\-0-9\.]+/
+
+   example: http://localhost:3000/cities/near/40.4,-3.5
 
