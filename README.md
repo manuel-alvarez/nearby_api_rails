@@ -15,10 +15,11 @@ This is still in development, but it will have these methods:
  - PUT: Updates city data
  - DELETE: Removes a city from the cities list
 
+/cities/:id/nearby
+
+ - GET: Shows a list of cities within a radius of 500Km from the given city
+
 /cities/near/:coords
 
  - GET: Shows a list of cities within a radius of 500Km from the given point
 
-/cities/nearby/:id
-
- - GET: Shows a list of cities within a radius of 500Km from the given city

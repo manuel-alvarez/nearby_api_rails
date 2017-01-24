@@ -51,4 +51,40 @@ class CitiesController < ActionController::Base
 
   	index
   end
+
+  def distance(lat1, lon1, lat2, lon2)
+    earth_radius = 6371  # in Kilometers
+
+    start_lat = lat1 * Math::PI / 180
+    start_lon = lon1 * Math::PI / 180
+    end_lat = lat2 * Math::PI / 180
+    end_lon = lon2 * Math::PI / 180
+
+    delta_lon = (start_lon - end_lon).abs;
+    # Calculate angle in the inner center of the sphere (earth). This does not have in mind the different angles depending on latitude, but it will be ok for this project.
+    central_angle = Math.acos((Math.sin(start_lat) * Math.sin(end_lat)) + (Math.cos(start_lat) * Math.cos(end_lat) * Math.cos(delta_lon)));
+    dist = earth_radius * central_angle;
+  end
+
+  def cities_near(lat, lon, max_distance=500)
+  	output = {}
+    puts "Calculating distances from lat: #{lat}, lon: #{lon}"
+  	Rails.application.config.cities.each_pair do |key, city|
+  		dist = self.distance(lat, lon, city["lat"], city["lon"])
+      if dist <= max_distance
+        city[:dist] = dist
+        output[key] = city
+      end
+  	end
+
+    return output
+  end
+
+  def nearby
+  	city = Rails.application.config.cities[params[:id]]
+    puts "Searching for nearby cities from city #{city}"
+    nearby_cities = self.cities_near(city["lat"], city["lon"])
+
+    render :json => nearby_cities
+  end
 end
